@@ -37,6 +37,15 @@ namespace PracticeMVC.Controllers
             return View("Error");
             
         }
+
+        [HttpPost]
+        public IActionResult SearchWord(string searchText)
+        {
+
+
+
+
+        }
         
 
         public IActionResult Privacy()

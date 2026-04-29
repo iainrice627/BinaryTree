@@ -50,15 +50,17 @@
     </div>
 
 
-    <form>
+    <form id="searchForm" method="post" asp-controller="Home" asp-action="SearchWord">
         <div>
             <label for="formGroupExampleInput" class="form-label">Text Box</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Text Box">
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Text Box" name="searchText">
             <input class="btn btn-primary" type="submit" value="Submit">
         </div>
     </form>
 </div>
 <hr>
+
+
 
 
 
