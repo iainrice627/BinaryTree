@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Searching and Sorting App</h1>
+    <p>
+        A text tool that helps seach and display occurences of specific words from a large body of text.
+    </p>
+</div>
+
+<div id="instructions">
+    <!-- instructions drop down  -->
+</div>
+<hr>
+
+<div id="textInput">
+    <div class="text-center">
+        <!-- INERT TEXT-->
+        <h2>Insert text</h2>
+        <p>
+            Paste Text into the text box below
+        </p>
+    </div>
+    <!-- scrolling feature for the text box-->
+    <!--TEXT BOX FORM -->
+
+    <form method="post" asp-controller="Home" asp-action="Index">
+        <div>
+            <label for="formGroupExampleInput" class="form-label">Text Box</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Text Box" name="inputText">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+<hr>
+
+@if(ViewBag.Success == true)
+{
+    // javascript to show the below div.
+}
+
+<div id="SearchBox">
+    <div class="text-center">
+        <h2>Insert Word</h2>
+        <p>
+            Type or past a word into the box below.
+        </p>
+    </div>
+
+
+    <form>
+        <div>
+            <label for="formGroupExampleInput" class="form-label">Text Box</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Text Box">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+<hr>
+
+
+
+
+<div id="results">
+    <div class="text-center">
+        <h2>Results</h2>
+        <p>
+            The INSERT word appears INSERT many times.<br><br>
+            A list of all the words with thier count is listed below.
+        </p>
+    </div>
+</div>
+<!-- revealded on rethe above being done.-->
+<!-- TABle of RESULSTS two coloumns. un known number of rows-->
+
+<div id="tableContainer">
+    <!-- empty container for the table-->
+</div>
+
+
+<script>
+    // javascript to listen for a string and submit in the text box to open the search box.
+    //javascript to listen for seach box string and submit button to display the results.
+     //javascript to insert essential values in to paragraph.
+    // JavaScript goes here to insert the view into tablecontainer div
+</script>
+
+
+<!-- results set 1-0 and arrows ponting left to right . so  suuser can see multitude of daas.-->
