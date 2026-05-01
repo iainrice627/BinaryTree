@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<KeyValuePair<string, int>>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -36,10 +38,26 @@
 
 <hr>
 
-@if(ViewBag.Success == true)
+@if(ViewBag.ShowMessage == true && ViewBag.ShowMessage != null)
 {
     // javascript to show the below div.
+    <div class="alert alert-success">
+        This is a success message shown because ViewBag.ShowMessage is true.
+    </div>
+
+    <div id="tableContainer">
+        @if (Model != null)
+        {
+            @await Html.PartialAsync("_table", Model)
+        }
+    </div>
+
 }
+
+
+
+<hr>
+
 
 <div id="SearchBox">
     <div class="text-center">
@@ -58,28 +76,23 @@
         </div>
     </form>
 </div>
-<hr>
 
+@if (ViewBag.Success == true)
+{
 
-
-
-
-
-<div id="results">
-    <div class="text-center">
-        <h2>Results</h2>
-        <p>
-            The INSERT word appears INSERT many times.<br><br>
-            A list of all the words with thier count is listed below.
-        </p>
+    <div id="results">
+        <div class="text-center">
+            <h2>Results</h2>
+            <p>
+                The INSERT word appears INSERT many times.<br><br>
+                A list of all the words with thier count is listed below.
+            </p>
+        </div>
     </div>
-</div>
-<!-- revealded on rethe above being done.-->
-<!-- TABle of RESULSTS two coloumns. un known number of rows-->
+    <!-- revealded on rethe above being done.-->
+    <!-- TABle of RESULSTS two coloumns. un known number of rows-->
+}
 
-<div id="tableContainer">
-    <!-- empty container for the table-->
-</div>
 
 
 <script>

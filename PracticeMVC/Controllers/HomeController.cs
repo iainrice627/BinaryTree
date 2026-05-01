@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using PracticeMVC.Models;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace PracticeMVC.Controllers
@@ -29,39 +31,44 @@ namespace PracticeMVC.Controllers
         public IActionResult Index(string inputText)
         {
 
-            var text = _binaryTree.CleanedString(inputText); // returns a list of strings
-            ViewBag.Success = _binaryTree.ReadValues(text);
-            ViewBag.Message = "Text succesfully proceesed";
-
-            if (ViewBag.Success ==true) {
-                
-                //send the 
-                //traverse the Binary tree nodes and 
-                // chnage the view so that when succusefful the list of words and their couunts appear in this next view. 
-                // the user can then manually look through the list of words and count.
-                
-                
-                return View();
+            var text = _binaryTree.CleanString(inputText); // returns a list of strings
 
 
+            foreach (var value in text)
+                {
+                    _binaryTree.Insert(value);
+                }
 
+            var modelList = _binaryTree.InOrderTraversal();
 
-            }
-            return View("Error");
+            var dictionary = new List<KeyValuePair<string, int>>();
+
+            foreach (var node in modelList)
+                {
+                    string nodeValue = node.Value;
+                    int count = node.ElementCount;
+
+                    dictionary.Add(new KeyValuePair<string, int>(nodeValue, count));
+                }
+
+            ViewBag.ShowMessage = true;
+
+            return View(dictionary);
+      
             
         }
 
-        [HttpPost]
-        public IActionResult SearchWord(string searchText)
-        {
+        //[HttpPost]
+        //public IActionResult SearchWord(string searchText)
+        //{
 
             
 
-            // call the sorting method to show first 10 key pairs
-            // send this list to the view 
+        //    // call the sorting method to show first 10 key pairs
+        //    // send this list to the view 
 
 
-        }
+        //}
         
 
         public IActionResult Privacy()

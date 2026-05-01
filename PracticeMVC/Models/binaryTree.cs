@@ -15,8 +15,6 @@ namespace PracticeMVC.Models
 
         public int ElementCount { get; set; }
 
-
-
         public Node(T value)
         {
             Value = value;
@@ -45,7 +43,7 @@ public class BinaryTree<T> where T : IComparable<T>
         
     }
 
-    //public List<Node> Nodes { get; private set; } 
+  
 
     public void Insert(T value)
     {
@@ -86,61 +84,59 @@ public class BinaryTree<T> where T : IComparable<T>
 
     }
 
-    public List<T> InOrderTraversal()
+    public List<Node<T>> InOrderTraversal()
     {
-        var result = new List<T>();
+        var result = new List<Node<T>>();
         InOrderRec(Root, result);
         return result;
     }
 
-    private void InOrderRec(Node<T> node, List<T> result)
+    private void InOrderRec(Node<T> node, List<Node<T>> result)
     {
         if (node != null)
         {
             InOrderRec(node.Left, result);
-            result.Add(node.Value);
+            result.Add(node);
             InOrderRec(node.Right, result);
         }
     }
 
-    public List<T> PreOrderTraversal()
+    public List<Node<T>> PreOrderTraversal()
     {
-        var result = new List<T>();
+        var result = new List<Node<T>>();
         PreOrderRec(Root, result);
         return result;
     }
 
-    private void PreOrderRec(Node<T> node, List<T> result)
+    private void PreOrderRec(Node<T> node, List<Node<T>> result)
     {
         if (node != null)
         {
-            result.Add(node.Value);
+            result.Add(node);
             PreOrderRec(node.Left, result);
             PreOrderRec(node.Right, result);
         }
     }
 
-    public List<T> PostOrderTraversal()
+    public List<Node<T>> PostOrderTraversal()
     {
-        var result = new List<T>();
+        var result = new List<Node<T>>();
         PostOrderRec(Root, result);
         return result;
     }
 
-    private void PostOrderRec(Node<T> node, List<T> result)
+    private void PostOrderRec(Node<T> node, List<Node<T>> result)
     {
         if (node != null)
         {
             PostOrderRec(node.Left, result);
             PostOrderRec(node.Right, result);
-            result.Add(node.Value);
+            result.Add(node);
         }
     }
 
 
-    //metods to use the traversals
-
-    public List<string> CleanedString(string inputText) 
+    public List<string> CleanString(string inputText) 
     {
         if (string.IsNullOrWhiteSpace(inputText))
             return new List<string>();
@@ -149,7 +145,7 @@ public class BinaryTree<T> where T : IComparable<T>
 
         foreach (char c in inputText)
         {
-            if (char.IsLetterOrDigit(c) || c == '&')
+            if (char.IsLetter(c) || c == '&')
             {
                 stringbuilder.Append(c);
             }
@@ -169,29 +165,6 @@ public class BinaryTree<T> where T : IComparable<T>
 
     }
 
-
-    public bool ReadValues(IEnumerable<T> values)
-    {
-
-        foreach (var value in values)
-        {
-            Insert(value);
-        }
-       
-
-        return true;
-
-    }
-
-
-    public void PutTextInList()
-    {
-        //crteate a dictionary
-
-        //use one of the traversals and at each point add node value and element count to the dictionary
-
-        //return Dictionary;
-    }
 
 
     public void SortHighToLow()
