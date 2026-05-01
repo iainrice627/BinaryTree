@@ -2,6 +2,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<BinaryTree<string>>();
+
+//insert calls for new services that are beyond the template.
 
 var app = builder.Build();
 

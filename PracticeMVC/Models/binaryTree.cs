@@ -1,4 +1,7 @@
-﻿using PracticeMVC.Models;
+﻿using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
+using PracticeMVC.Models;
+using System.Text;
 
 namespace PracticeMVC.Models
 {
@@ -10,12 +13,16 @@ namespace PracticeMVC.Models
 
         public Node<T> Right { get; set; }
 
+        public int ElementCount { get; set; }
+
+
 
         public Node(T value)
         {
             Value = value;
             Left = null;
             Right = null;
+            ElementCount = 1;
 
         }
       
@@ -23,39 +30,52 @@ namespace PracticeMVC.Models
     }
 }
 
+
 public class BinaryTree<T> where T : IComparable<T>
 {
 
     public Node<T> Root { get; private set; }
+    
 
     public BinaryTree()
     {
 
         Root = null;
+
+        
     }
+
+    //public List<Node> Nodes { get; private set; } 
 
     public void Insert(T value)
     {
 
         Root = InsertRecursive(Root, value);
 
+
     }
 
     private Node<T> InsertRecursive(Node<T> node, T value)
     {
         if (node == null)
-        { 
-            return new Node<T>(value); 
-        
+        {
+            return new Node<T>(value);
+
         }
 
-        if (value.CompareTo(node.Value) < 0)
+        else if (value.CompareTo(node.Value) == 0)
+        {
+            node.ElementCount++;
+
+        }
+
+        else if (value.CompareTo(node.Value) < 0)
 
         {
             node.Left = InsertRecursive(node.Left, value);
         }
 
-        else if(value.CompareTo(node.Value) >0)
+        else if (value.CompareTo(node.Value) > 0)
         {
             node.Right = InsertRecursive(node.Right, value);
 
@@ -120,13 +140,75 @@ public class BinaryTree<T> where T : IComparable<T>
 
     //metods to use the traversals
 
-    public bool ReadString(string inputText)
+    public List<string> CleanedString(string inputText) 
+    {
+        if (string.IsNullOrWhiteSpace(inputText))
+            return new List<string>();
+
+        var stringbuilder = new StringBuilder();
+
+        foreach (char c in inputText)
+        {
+            if (char.IsLetterOrDigit(c) || c == '&')
+            {
+                stringbuilder.Append(c);
+            }
+            else
+            {
+                stringbuilder.Append(',');
+            }
+
+        }
+
+        List<string> textBody = stringbuilder.ToString().Split(',', StringSplitOptions.RemoveEmptyEntries).Select(word => word.Trim().ToLower()).Where(word => word.Length > 0).ToList();
+
+
+        return textBody;
+
+        //https://learn.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
+
+    }
+
+
+    public bool ReadValues(IEnumerable<T> values)
+    {
+
+        foreach (var value in values)
+        {
+            Insert(value);
+        }
+       
+
+        return true;
+
+    }
+
+
+    public void PutTextInList()
+    {
+        //crteate a dictionary
+
+        //use one of the traversals and at each point add node value and element count to the dictionary
+
+        //return Dictionary;
+    }
+
+
+    public void SortHighToLow()
     {
 
 
+    }
+
+    public void SortLowToHigh()
+    {
 
 
-        return true;
+    }
+
+    public void SortAlphatically()
+    {
+
 
     }
 
