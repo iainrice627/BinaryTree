@@ -24,7 +24,9 @@ namespace PracticeMVC.Controllers
         [HttpPost]
         public IActionResult Index(string inputText)
         {
-            var binaryTree = binaryTree();
+            
+            
+            BinaryTree<string> binaryTree;
 
             bool confirmed = binaryTree.ReadString(inputText);
 
@@ -42,7 +44,9 @@ namespace PracticeMVC.Controllers
         public IActionResult SearchWord(string searchText)
         {
 
-
+            
+            // call the sorting method to show first 10 key pairs
+            // send this list to the view 
 
 
         }
