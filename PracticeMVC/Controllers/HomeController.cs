@@ -12,12 +12,14 @@ namespace PracticeMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly BinaryTree<string> _binaryTree;
+       // private readonly BinaryTree<string> _binaryTree;
+        private readonly Service _service;
 
-        public HomeController(ILogger<HomeController> logger, BinaryTree<string> binaryTree)
+        public HomeController(ILogger<HomeController> logger, Service service)  //BinaryTree<string> binaryTree
         {
             _logger = logger;
-            _binaryTree = binaryTree;
+            //_binaryTree = binaryTree;
+            _service = service;
             
         }
 
@@ -30,27 +32,8 @@ namespace PracticeMVC.Controllers
         [HttpPost]
         public IActionResult Index(string inputText)
         {
-
-            var text = _binaryTree.CleanString(inputText); // returns a list of strings
-
-
-            foreach (var value in text)
-                {
-                    _binaryTree.Insert(value);
-                }
-
-            var modelList = _binaryTree.InOrderTraversal();
-
-            var dictionary = new List<KeyValuePair<string, int>>();
-
-            foreach (var node in modelList)
-                {
-                    string nodeValue = node.Value;
-                    int count = node.ElementCount;
-
-                    dictionary.Add(new KeyValuePair<string, int>(nodeValue, count));
-                }
-
+            var dictionary = _service.ProccessString(inputText);
+            
             ViewBag.ShowMessage = true;
 
             return View(dictionary);
