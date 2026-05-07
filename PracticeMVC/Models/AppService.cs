@@ -10,12 +10,12 @@ using System.Text;
 
 namespace PracticeMVC.Models
 {
-    public class Service
+    public class AppService
     {
         private readonly BinaryTree<string> _binaryTree;
 
 
-        public Service(BinaryTree<string> binaryTree)
+        public AppService(BinaryTree<string> binaryTree)
         {
             _binaryTree = binaryTree;
         }

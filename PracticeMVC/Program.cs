@@ -1,9 +1,11 @@
+using PracticeMVC.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<BinaryTree<string>>();
-builder.Services.AddSingleton<Service>();
+builder.Services.AddSingleton<AppService>();
 
 //insert calls for new services that are beyond the template.
 

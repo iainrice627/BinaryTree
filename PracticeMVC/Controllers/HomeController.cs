@@ -13,9 +13,9 @@ namespace PracticeMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
        // private readonly BinaryTree<string> _binaryTree;
-        private readonly Service _service;
+        private readonly AppService _service;
 
-        public HomeController(ILogger<HomeController> logger, Service service)  //BinaryTree<string> binaryTree
+        public HomeController(ILogger<HomeController> logger, AppService service)  //BinaryTree<string> binaryTree
         {
             _logger = logger;
             //_binaryTree = binaryTree;
