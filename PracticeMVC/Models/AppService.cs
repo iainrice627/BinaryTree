@@ -29,7 +29,12 @@ namespace PracticeMVC.Models
             List<string> text = GetString(inputText);
             PutInTree(text);
             var modelList = TraverseTree();
+            // call a sort method on the List of Nodes then put this list in the dictionary.
+            modelList = _binaryTree.SortHighToLow(modelList);
+
             var dictionary = PutTextInDictionary(modelList);
+            //the dictionary is unsorted.
+            
 
             return dictionary;
 

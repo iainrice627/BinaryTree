@@ -33,6 +33,8 @@ namespace PracticeMVC.Controllers
         public IActionResult Index(string inputText)
         {
             var dictionary = _service.ProccessString(inputText);
+
+            //the dictionary at this point is unsorted.
             
             ViewBag.ShowMessage = true;
 
