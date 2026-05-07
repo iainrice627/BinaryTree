@@ -206,13 +206,47 @@ public class BinaryTree<T> where T : IComparable<T>
 
     }
 
-    public void SortLowToHigh()
+    public  List<Node<T>> SortLowToHigh(List<Node<T>> result)
+    {
+
+        int sizeOfnodesList = result.Count();
+
+        int maxIndex = 0;
+
+        //sorted section
+        for (int i = 0; i < sizeOfnodesList - 1; ++i)
+        {
+            maxIndex = i;
+            //identifiys biggest value in unsorted section
+            for (int j = i + 1; j < sizeOfnodesList; ++j)
+                if (result[j].ElementCount < result[maxIndex].ElementCount)
+                {  // to sort in acending use <.  to sort decending us >  here.
+                    maxIndex = j;
+
+                }
+            //Swap(result[maxIndex], result[i]);
+
+            Node<T> Temp = result[maxIndex];
+            result[maxIndex] = result[i];
+            result[i] = Temp;
+
+
+
+        }
+
+
+        return result;
+
+
+    }
+
+    public void SortAlphaticallyAZ()
     {
 
 
     }
 
-    public void SortAlphatically()
+    public void SortAlphaticallyZA()
     {
 
 
