@@ -12,13 +12,11 @@ namespace PracticeMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-       // private readonly BinaryTree<string> _binaryTree;
         private readonly AppService _service;
 
-        public HomeController(ILogger<HomeController> logger, AppService service)  //BinaryTree<string> binaryTree
+        public HomeController(ILogger<HomeController> logger, AppService service)  
         {
             _logger = logger;
-            //_binaryTree = binaryTree;
             _service = service;
             
         }
@@ -33,8 +31,6 @@ namespace PracticeMVC.Controllers
         public IActionResult Index(string inputText)
         {
             var dictionary = _service.ProccessString(inputText);
-
-            //the dictionary at this point is unsorted.
             
             ViewBag.ShowMessage = true;
 
@@ -49,8 +45,13 @@ namespace PracticeMVC.Controllers
 
             
 
-        //    // call the sorting method to show first 10 key pairs
-        //    // send this list to the view 
+        //    traverse the tree
+            // at each node check if the value is same as word inserted.
+            //if yes then get the element count value.
+            // send the value name and the count to a partial view - that shows a <p> element 
+            //insert the values into the <p>
+            //return the view index with this new partial view inserted. 
+        //    
 
 
         //}

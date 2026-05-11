@@ -13,26 +13,28 @@ namespace PracticeMVC.Models
     public class AppService
     {
         private readonly BinaryTree<string> _binaryTree;
+        private readonly Sorting<string> _sorting; 
 
-
-        public AppService(BinaryTree<string> binaryTree)
+        public AppService(BinaryTree<string> binaryTree, Sorting<string> sorting)
         {
             _binaryTree = binaryTree;
+            _sorting = sorting;
         }
 
 
         public List<KeyValuePair<string, int>> ProccessString(string inputText)
         {
 
-            //overarching service function to return dictionary of words and their count.
+            //overarching service function to return dictionary of words and their count. this is acting like a coordinator.
 
             List<string> text = GetString(inputText);
             PutInTree(text);
             var modelList = TraverseTree();
             // call a sort method on the List of Nodes then put this list in the dictionary.
-            modelList = _binaryTree.SortHighToLow(modelList);
+           // modelList = _binaryTree.SortHighToLow(modelList);
+            modelList = _sorting.SortHighToLow(modelList);
             var dictionary = PutTextInDictionary(modelList);
-            //the dictionary is unsorted.
+            
             
 
             return dictionary;
@@ -43,17 +45,17 @@ namespace PracticeMVC.Models
 
         List<string> GetString(string inputText)
         {
-            //service - get a workable text and put in a list of strings
+            // get a workable text and put in a list of strings
             var text = _binaryTree.CleanString(inputText);
             
             return text;
 
         }
 
-        //public BinaryTree<string> PutInTree(string text)
+       
         void PutInTree(List<string> text)
         {
-            //servive - put in tree
+            // put text in tree
 
             int size = text.Count();
 
@@ -69,15 +71,12 @@ namespace PracticeMVC.Models
                 _binaryTree.Insert(value);
             }
 
-            //return _binaryTree;
-
-
         }
 
         List<Node<string>> TraverseTree()
         {
 
-            //service - search the tree put in a list in this order
+            //search the tree put in a list in this order
             var modelList = _binaryTree.InOrderTraversal();
 
             return modelList;
@@ -86,7 +85,7 @@ namespace PracticeMVC.Models
         List<KeyValuePair<string, int>> PutTextInDictionary(List<Node<string>> modelList)
         {
 
-            //sewvice create dictionary put into it items from the nodeslist
+            //create dictionary put into it items from the nodeslist
             var dictionary = new List<KeyValuePair<string, int>>();
 
             foreach (var node in modelList)
