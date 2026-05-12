@@ -136,35 +136,7 @@ public class BinaryTree<T> where T : IComparable<T>
     }
 
 
-    //this seems like something for a 'contract' - role to set rules of collaboration and transform data.
-    public List<string> CleanString(string inputText) 
-    {
-        if (string.IsNullOrWhiteSpace(inputText))
-            return new List<string>();
-
-        var stringbuilder = new StringBuilder();
-
-        foreach (char c in inputText)
-        {
-            if (char.IsLetter(c) || c == '&')
-            {
-                stringbuilder.Append(c);
-            }
-            else
-            {
-                stringbuilder.Append(',');
-            }
-
-        }
-
-        List<string> textBody = stringbuilder.ToString().Split(',', StringSplitOptions.RemoveEmptyEntries).Select(word => word.Trim().ToLower()).Where(word => word.Length > 0).ToList();
-
-
-        return textBody;
-
-        //https://learn.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
-
-    }
+    
 
 
 

@@ -1,8 +1,4 @@
-﻿//using Microsoft.AspNetCore.Components.Forms;
-//using System.Xml;
-//using static System.Net.Mime.MediaTypeNames;
-
-using Microsoft.AspNetCore.WebUtilities;
+﻿using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using PracticeMVC.Models;
 using System.Text;
@@ -13,12 +9,14 @@ namespace PracticeMVC.Models
     public class AppService
     {
         private readonly BinaryTree<string> _binaryTree;
-        private readonly Sorting<string> _sorting; 
+        private readonly Sorting<string> _sorting;
+        private readonly TextContract _textContract;
 
-        public AppService(BinaryTree<string> binaryTree, Sorting<string> sorting)
+        public AppService(BinaryTree<string> binaryTree, Sorting<string> sorting, TextContract textContract)
         {
             _binaryTree = binaryTree;
             _sorting = sorting;
+            _textContract = textContract;
         }
 
 
@@ -46,7 +44,8 @@ namespace PracticeMVC.Models
         List<string> GetString(string inputText)
         {
             // get a workable text and put in a list of strings
-            var text = _binaryTree.CleanString(inputText);
+            //var text = _binaryTree.CleanString(inputText);
+            var text = _textContract.CleanString(inputText);
             
             return text;
 
