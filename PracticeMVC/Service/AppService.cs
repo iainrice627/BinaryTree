@@ -4,7 +4,7 @@ using PracticeMVC.Models;
 using System.Text;
 
 
-namespace PracticeMVC.Models
+namespace PracticeMVC.Service
 {
     public class AppService
     {
@@ -41,7 +41,7 @@ namespace PracticeMVC.Models
             
 
 
-        List<string> GetString(string inputText)
+        public List<string> GetString(string inputText)
         {
             // get a workable text and put in a list of strings
             //var text = _binaryTree.CleanString(inputText);
@@ -52,7 +52,7 @@ namespace PracticeMVC.Models
         }
 
        
-        void PutInTree(List<string> text)
+        public void PutInTree(List<string> text)
         {
             // put text in tree
 
@@ -72,7 +72,7 @@ namespace PracticeMVC.Models
 
         }
 
-        List<Node<string>> TraverseTree()
+        public List<Node<string>> TraverseTree()
         {
 
             //search the tree put in a list in this order
@@ -81,7 +81,7 @@ namespace PracticeMVC.Models
             return modelList;
         }
 
-        List<KeyValuePair<string, int>> PutTextInDictionary(List<Node<string>> modelList)
+        public List<KeyValuePair<string, int>> PutTextInDictionary(List<Node<string>> modelList)
         {
 
             //create dictionary put into it items from the nodeslist

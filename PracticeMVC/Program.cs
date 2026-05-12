@@ -1,4 +1,5 @@
 using PracticeMVC.Models;
+using PracticeMVC.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.Services.AddSingleton<BinaryTree<string>>();
 builder.Services.AddSingleton<Sorting<string>>();
 builder.Services.AddSingleton<AppService>();
 builder.Services.AddSingleton<TextContract>();
+builder.Services.AddSingleton<Coordinator>();
 
 //insert calls for new services that are beyond the template.
 

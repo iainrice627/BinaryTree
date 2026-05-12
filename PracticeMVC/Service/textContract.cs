@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
-using PracticeMVC.Models;
 using System.Text;
 
 
-namespace PracticeMVC.Models
+namespace PracticeMVC.Service
 {
     public class TextContract
     {

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using PracticeMVC.Models;
+using PracticeMVC.Service;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -12,12 +13,13 @@ namespace PracticeMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly AppService _service;
+       
+        private readonly Coordinator _coordinator;
 
-        public HomeController(ILogger<HomeController> logger, AppService service)  
+        public HomeController(ILogger<HomeController> logger, Coordinator coordinator)  //
         {
             _logger = logger;
-            _service = service;
+            _coordinator = coordinator;
             
         }
 
@@ -30,8 +32,9 @@ namespace PracticeMVC.Controllers
         [HttpPost]
         public IActionResult Index(string inputText)
         {
-            var dictionary = _service.ProccessString(inputText);
-            
+            //var dictionary = _service.ProccessString(inputText);
+            var dictionary = _coordinator.ProccessString(inputText);
+
             ViewBag.ShowMessage = true;
 
             return View(dictionary);
