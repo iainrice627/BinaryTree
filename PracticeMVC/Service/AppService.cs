@@ -18,28 +18,7 @@ namespace PracticeMVC.Service
             _sorting = sorting;
             _textContract = textContract;
         }
-
-
-        public List<KeyValuePair<string, int>> ProccessString(string inputText)
-        {
-
-            //overarching service function to return dictionary of words and their count. this is acting like a coordinator.
-
-            List<string> text = GetString(inputText);
-            PutInTree(text);
-            var modelList = TraverseTree();
-            // call a sort method on the List of Nodes then put this list in the dictionary.
-           // modelList = _binaryTree.SortHighToLow(modelList);
-            modelList = _sorting.SortHighToLow(modelList);
-            var dictionary = PutTextInDictionary(modelList);
-            
-            
-
-            return dictionary;
-
-        }
-            
-
+           
 
         public List<string> GetString(string inputText)
         {

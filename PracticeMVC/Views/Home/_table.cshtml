@@ -5,25 +5,82 @@
 
 @model List<KeyValuePair<string, int>>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Word</th>
-            <th scope="col">Count</th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach(var item in Model){   @* model is always model but is the object being passed in*@
-        <tr>
+<div class="container mt-4">
+    <div class="row">
+
+        <!-- COLUMN 1 — spans both rows -->
+        <div class="col-4">
+            <div class="h-100 border p-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Word</th>
+                                <th scope="col">Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach(var item in Model){   @* model is always model but is the object being passed in*@
+                            <tr>
                
-            <td>@item.Key</td>
-            <td>@item.Value</td>
+                                <td>@item.Key</td>
+                                <td>@item.Value</td>
                 
-        </tr>
-    }
+                            </tr>
+                        }
             
-    </tbody>
-</table>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        
+        <div class="col-8">
+
+            <!-- ROW 1 -->
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="border p-3">
+                        <h2>Search Performance</h2>
+                        <p> 
+                           The search took X many steps to complete. <!--  insert performance sarch details -->
+                        </p>
+                        <p>
+                           The search has a Y BIG O thing.
+                        </p>
+
+
+                    </div>  
+                </div>
+                <div class="col-6">
+                    <div class="border p-3">
+                        <h2>Sort Performance</h2>
+                        <p>
+                            The sort of the table took X many steps to complete.
+                        </p>
+                        <p>
+                            The sort has a Y BIG O thing.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 2 -->
+            <div class="row">
+                <div class="col-6">
+                    <div class="border p-3">
+                        INSERT SEARCH GRAPH HERE
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="border p-3">INSERT SORT GRAPH HERE</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
 
 

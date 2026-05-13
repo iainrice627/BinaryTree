@@ -8,7 +8,7 @@ namespace PracticeMVC.Service
     public class TextContract
     {
 
-        // purpose - to mediate the interactions between objects. eg the webiste takes in a valid input, but this text needs cleaned so it can be put in the binary tree object.
+        // purpose of the class - to mediate the interactions between objects. eg the webiste takes in a valid input, but this text needs cleaned so it can be put in the binary tree object.
         //this seems like something for a 'contract' - role to set rules of collaboration and transform data.
         public List<string> CleanString(string inputText)
         {

@@ -26,14 +26,51 @@
     </div>
     <!-- scrolling feature for the text box-->
     <!--TEXT BOX FORM -->
-
-    <form method="post" asp-controller="Home" asp-action="Index">
-        <div>
-            <label for="formGroupExampleInput" class="form-label">Text Box</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Text Box" name="inputText">
-            <input class="btn btn-primary" type="submit" value="Submit">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-8">
+                <div>
+                    <form method="post" asp-controller="Home" asp-action="Index">
+                        <div>
+                            <label for="formGroupExampleInput" class="form-label"></label>
+                            <textarea class="form-control big-box" id="inputText" name="inputText"placeholder="Enter text here"></textarea>
+                            <input class="btn btn-primary mt-3" type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="dropdown mt-4">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSearch" data-bs-toggle="dropdown" aria-expanded="false">
+                                Select Search Method
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">For Loop</a></li>
+                                <li><a class="dropdown-item" href="#">Binary Search Tree</a></li>
+                                <li><a class="dropdown-item" href="#">Other</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="dropdown mt-4">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSort" data-bs-toggle="dropdown" aria-expanded="false">
+                                Select Sort Method
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">BubbleSort</a></li>
+                                <li><a class="dropdown-item" href="#">QuickSort</a></li>
+                                <li><a class="dropdown-item" href="#">Other</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
 
 <hr>
@@ -54,12 +91,22 @@
 
 }
 
-
-
 <hr>
 
 
-<div id="SearchBox">
+
+
+
+
+
+
+
+
+
+
+
+
+@* <div id="SearchBox">
     <div class="text-center">
         <h2>Insert Word</h2>
         <p>
@@ -67,14 +114,15 @@
         </p>
     </div>
 
-
-    <form id="searchForm" method="post" asp-controller="Home" asp-action="SearchWord">
-        <div>
-            <label for="formGroupExampleInput" class="form-label">Text Box</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Text Box" name="searchText">
-            <input class="btn btn-primary" type="submit" value="Submit">
-        </div>
-    </form>
+    <div class="d-flex justify-content-center">
+        <form id="searchForm" method="post" asp-controller="Home" asp-action="SearchWord">
+            <div>
+                <label for="formGroupExampleInput" class="form-label">Text Box</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Text Box" name="searchText">
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 </div>
 
 @if (ViewBag.Success == true)
@@ -91,16 +139,30 @@
     </div>
     <!-- revealded on rethe above being done.-->
     <!-- TABle of RESULSTS two coloumns. un known number of rows-->
-}
+    } *@
+
 
 
 
 <script>
+    //this already is in the bootstrap JS in the libary folder. check there. 
     // javascript to listen for a string and submit in the text box to open the search box.
     //javascript to listen for seach box string and submit button to display the results.
      //javascript to insert essential values in to paragraph.
     // JavaScript goes here to insert the view into tablecontainer div
 </script>
+
+<style>
+
+.big-box{
+     width: 100%; /* narrower */
+     height: 250px; /* taller */
+     border: 1px solid #000;
+     
+}
+/* does this need to go in the CSS folder in site.js and then add the link to the layout file?  */
+
+</style>
 
 
 <!-- results set 1-0 and arrows ponting left to right . so  suuser can see multitude of daas.-->

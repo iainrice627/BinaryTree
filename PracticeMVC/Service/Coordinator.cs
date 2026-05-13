@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using PracticeMVC.Models;
-//using PracticeMVC.Service;
 using System.Text;
 
 namespace PracticeMVC.Service
@@ -28,7 +27,6 @@ namespace PracticeMVC.Service
             _service.PutInTree(text);
             var modelList = _service.TraverseTree();
             // call a sort method on the List of Nodes then put this list in the dictionary.
-            // modelList = _binaryTree.SortHighToLow(modelList);
             modelList = _sorting.SortHighToLow(modelList);
             var dictionary = _service.PutTextInDictionary(modelList);
 
