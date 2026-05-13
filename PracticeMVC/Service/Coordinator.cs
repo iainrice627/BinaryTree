@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.WebUtilities;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using PracticeMVC.Models;
 using System.Text;
@@ -23,14 +24,21 @@ namespace PracticeMVC.Service
 
             //overarching service function to return dictionary of words and their count. this is acting like a coordinator.
 
+            //create the required search object ie a binary tree, depending on what is passed in
+            //create the required sort object ie a bubble sort, depending on that is passed in.
+
+          
             List<string> text = _service.GetString(inputText);
+
+
+
+
             _service.PutInTree(text);
             var modelList = _service.TraverseTree();
             // call a sort method on the List of Nodes then put this list in the dictionary.
             modelList = _sorting.SortHighToLow(modelList);
             var dictionary = _service.PutTextInDictionary(modelList);
 
-     
 
             return dictionary;
 

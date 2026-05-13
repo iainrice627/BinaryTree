@@ -32,9 +32,13 @@
                 <div>
                     <form method="post" asp-controller="Home" asp-action="Index">
                         <div>
+                            <input type="hidden" id="searchMethod" name="searchMethod" />
+                            <input type="hidden" id="sortMethod" name="sortMethod" />
+
                             <label for="formGroupExampleInput" class="form-label"></label>
                             <textarea class="form-control big-box" id="inputText" name="inputText"placeholder="Enter text here"></textarea>
                             <input class="btn btn-primary mt-3" type="submit" value="Submit">
+
                         </div>
                     </form>
                 </div>
@@ -46,10 +50,10 @@
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSearch" data-bs-toggle="dropdown" aria-expanded="false">
                                 Select Search Method
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">For Loop</a></li>
-                                <li><a class="dropdown-item" href="#">Binary Search Tree</a></li>
-                                <li><a class="dropdown-item" href="#">Other</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownSearch">
+                                <li><a class="dropdown-item" href="#" onclick="setSearch('FL')">For Loop</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setSearch('BST')">Binary Search Tree</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setSearch('Other')">Other</a></li>
                             </ul>
                         </div>
                     </div>
@@ -60,10 +64,10 @@
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSort" data-bs-toggle="dropdown" aria-expanded="false">
                                 Select Sort Method
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">BubbleSort</a></li>
-                                <li><a class="dropdown-item" href="#">QuickSort</a></li>
-                                <li><a class="dropdown-item" href="#">Other</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownSort">
+                                <li><a class="dropdown-item" href="#" onclick="setSort('BS')">BubbleSort</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setSort('QS')">QuickSort</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setSort('Other')">Other</a></li>
                             </ul>
                         </div>
                     </div>
@@ -142,16 +146,16 @@
     } *@
 
 
-
+@* 
 
 <script>
-    //this already is in the bootstrap JS in the libary folder. check there. 
+    //this already is in the bootstrap JS in the libary folder. check there. use stie.js to add js.
     // javascript to listen for a string and submit in the text box to open the search box.
     //javascript to listen for seach box string and submit button to display the results.
      //javascript to insert essential values in to paragraph.
     // JavaScript goes here to insert the view into tablecontainer div
-</script>
-
+</script> *@
+@* 
 <style>
 
 .big-box{
@@ -162,7 +166,7 @@
 }
 /* does this need to go in the CSS folder in site.js and then add the link to the layout file?  */
 
-</style>
+</style> *@
 
 
 <!-- results set 1-0 and arrows ponting left to right . so  suuser can see multitude of daas.-->
