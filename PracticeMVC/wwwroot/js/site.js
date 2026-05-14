@@ -6,9 +6,11 @@
 
 function setSearch(value) {
     document.getElementById('searchMethod').value = value;
+    //document.getElementById('dropdownSearch').innerText = value;
 }
 
 function setSort(value) {
     document.getElementById('sortMethod').value = value;
+    //document.getElementById('dropdownSearch').innerText = value;
 }
 

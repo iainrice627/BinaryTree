@@ -1,20 +1,21 @@
 ﻿using PracticeMVC.Models;
-using System.Xml.Linq;
-using static Microsoft.CodeAnalysis.CSharp.SyntaxTokenParser;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
+using System.Text;
 
 namespace PracticeMVC.Strategies
 {
-    public class ISortingStrategy<T>
+    public interface ISortingStrategy
     {
 
-        void Sorting(List<Node<T>> result);
+        public void Sort(List<KeyValuePair<string, int>> nodes);
     }
 
-    public class BubbleSort<T> : ISortingStrategy<T>
+    public class BubbleSort : ISortingStrategy
     {
-        public List<Node<T>> Sorting(List<Node<T>> result)
+        public void Sort(List<KeyValuePair<string, int>> nodes)
         {
-            int sizeOfnodesList = result.Count;
+            int sizeOfnodesList = nodes.Count;
 
             int maxIndex = 0;
 
@@ -24,21 +25,21 @@ namespace PracticeMVC.Strategies
                 maxIndex = i;
                 //identifiys biggest value in unsorted section
                 for (int j = i + 1; j < sizeOfnodesList; ++j)
-                    if (result[j].ElementCount > result[maxIndex].ElementCount)
+                    if (nodes[j].Value > nodes[maxIndex].Value)
                     {  // to sort in acending use <.  to sort decending us >  here.
                         maxIndex = j;
 
                     }
                 //Swap(result[maxIndex], result[i]);
 
-                Node<T> Temp = result[maxIndex];
-                result[maxIndex] = result[i];
-                result[i] = Temp;
+                var Temp = nodes[maxIndex]; // not storing nodes but key value pairs now.
+                nodes[maxIndex] = nodes[i];
+                nodes[i] = Temp;
 
             }
 
 
-            return result;
+            //return nodes;
 
 
         }
@@ -46,27 +47,33 @@ namespace PracticeMVC.Strategies
     }
 
 
-    public class QuickSort<T> : ISortingStrategy<T>
+    public class QuickSort : ISortingStrategy
     {
-        public List<Node<T>> Sorting(List<Node<T>> result)
+        public void Sort(List<KeyValuePair<string, int>> nodes)
         {
+
+            QuickSortInternal(nodes, 0, nodes.Count - 1);
+            
+        }
+
+
+        private static void QuickSortInternal(List<KeyValuePair<string, int>> nodes, int left, int right) {
             //insert the quick sort code.
-            int left = 0;
-            int right = result.Count - 1;
 
-            if (left >= right) return;
+            if (left >= right)
+                return; 
 
-            int pivotIndex = Partition(result, left, right);
+            int pivotIndex = Partition(nodes, left, right);
 
             // Recursively sort left and right partitions
-            Sorting(result, left, pivotIndex - 1);
-            Sorting(result, pivotIndex + 1, right);
+            QuickSort.QuickSortInternal(nodes, left, pivotIndex - 1);
+            QuickSort.QuickSortInternal(nodes, pivotIndex + 1, right);
 
-            return result;
+            //return result;
 
         }
 
-        private static int Partition(List<Node<T>> nodes, int left, int right)
+        private static int Partition(List<KeyValuePair<string, int>> nodes, int left, int right)
         {
     
 
@@ -87,11 +94,11 @@ namespace PracticeMVC.Strategies
 
         }
 
-        private static void Swap(List<Node<T>> nodes, int indexA, int indexB)
+        private static void Swap(List<KeyValuePair<string, int>> nodes, int indexA, int indexB)
         {
 
             if (indexA == indexB) return;
-            Node temp = nodes[indexA];
+            var temp = nodes[indexA];
             nodes[indexA] = nodes[indexB];
             nodes[indexB] = temp;
 

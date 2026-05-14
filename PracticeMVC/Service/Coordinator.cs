@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using PracticeMVC.Models;
+using PracticeMVC.Strategies;
 using System.Text;
 
 namespace PracticeMVC.Service
@@ -10,45 +11,28 @@ namespace PracticeMVC.Service
     {
 
         private readonly AppService _service;
-        private readonly Sorting<string> _sorting;
+        //private readonly Sorting<string> _sorting;
 
-        public Coordinator(AppService service, Sorting<string> sorting) 
+        public Coordinator(AppService service ) ///Sorting<string> sorting
         {
             _service = service;
-            _sorting = sorting;
+            //_sorting = sorting;
 
         }
 
-        public List<KeyValuePair<string, int>> ProccessString(string inputText)
+        public List<KeyValuePair<string, int>> ProccessString(string inputText, string UserSearchChoice, string UserSortChoice)
         {
-
-            //overarching service function to return dictionary of words and their count. this is acting like a coordinator.
-
-            //create the required search object ie a binary tree, depending on what is passed in
-            //create the required sort object ie a bubble sort, depending on that is passed in.
-
           
-            List<string> text = _service.GetString(inputText);
+            var items = _service.GetString(inputText);
+
+            var newItems = _service.DecideSearchStrategy(items, UserSearchChoice);
+
+            return _service.DecideSortStrategy(newItems, UserSortChoice);
+
+            //var dictionary = _service.PutTextInDictionary(newItems);
 
 
-
-
-            _service.PutInTree(text);
-            var modelList = _service.TraverseTree();
-            //we have the list of nodes we now need to sort them
-
-
-            
-            // call a sort method on the List of Nodes then put this list in the dictionary.
-            modelList = _sorting.SortHighToLow(modelList);
-
-
-
-
-            var dictionary = _service.PutTextInDictionary(modelList);
-
-
-            return dictionary;
+            //return dictionary;
 
         }
 

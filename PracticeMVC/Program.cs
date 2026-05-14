@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<BinaryTree<string>>();
-builder.Services.AddSingleton<Sorting<string>>();
+//builder.Services.AddSingleton<BinaryTree<string>>();
+//builder.Services.AddSingleton<Sorting<string>>();
 builder.Services.AddSingleton<AppService>();
 builder.Services.AddSingleton<TextContract>();
 builder.Services.AddSingleton<Coordinator>();
