@@ -53,10 +53,10 @@ namespace PracticeMVC.Service
 
             }
 
-            //insert some exception handling if no match
+            
             else
             {
-                //need some return if we cant serarch. throw?
+                
                 throw new ArgumentException("Invalid search method choice.", nameof(UserSearchChoice));
             }
 
@@ -92,7 +92,12 @@ namespace PracticeMVC.Service
                 }
 
             //insert some exception handling if no match
+            else
+            {
+                throw new ArgumentException("Invalid search method choice.", nameof(UserSortChoice));
 
+            }
+            
             return items;
 
 

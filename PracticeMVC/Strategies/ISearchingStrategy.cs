@@ -4,7 +4,6 @@
     {
         public List<KeyValuePair<string, int>> Search(List<string> items);
 
-
     }
 
 
@@ -49,7 +48,7 @@
 
         public List<KeyValuePair<string, int>> Search(List<string> items)
         {
-            // this needs to do the work with the list. 
+             
             PutInTree(items);
 
             var nodes = TraverseTree();
@@ -234,7 +233,7 @@
                     steps++; // add
                 }
 
-                //Console.WriteLine($"Least-efficient search steps: {steps}");
+                
                 return results;
             }
     }

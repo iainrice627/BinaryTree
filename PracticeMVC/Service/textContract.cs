@@ -35,8 +35,7 @@ namespace PracticeMVC.Service
 
             return textBody;
 
-            //https://learn.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
-
+            
         }
 
 

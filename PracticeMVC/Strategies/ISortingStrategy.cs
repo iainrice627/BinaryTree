@@ -19,7 +19,7 @@ namespace PracticeMVC.Strategies
 
             int maxIndex = 0;
 
-            //sorted section
+            
             for (int i = 0; i < sizeOfnodesList - 1; ++i)
             {
                 maxIndex = i;
@@ -30,16 +30,16 @@ namespace PracticeMVC.Strategies
                         maxIndex = j;
 
                     }
-                //Swap(result[maxIndex], result[i]);
+                
 
-                var Temp = nodes[maxIndex]; // not storing nodes but key value pairs now.
+                var Temp = nodes[maxIndex]; 
                 nodes[maxIndex] = nodes[i];
                 nodes[i] = Temp;
 
             }
 
 
-            //return nodes;
+            
 
 
         }
@@ -58,7 +58,7 @@ namespace PracticeMVC.Strategies
 
 
         private static void QuickSortInternal(List<KeyValuePair<string, int>> nodes, int left, int right) {
-            //insert the quick sort code.
+            
 
             if (left >= right)
                 return; 
@@ -69,7 +69,7 @@ namespace PracticeMVC.Strategies
             QuickSort.QuickSortInternal(nodes, left, pivotIndex - 1);
             QuickSort.QuickSortInternal(nodes, pivotIndex + 1, right);
 
-            //return result;
+            
 
         }
 

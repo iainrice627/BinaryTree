@@ -11,12 +11,11 @@ namespace PracticeMVC.Service
     {
 
         private readonly AppService _service;
-        //private readonly Sorting<string> _sorting;
+        
 
-        public Coordinator(AppService service ) ///Sorting<string> sorting
+        public Coordinator(AppService service ) 
         {
             _service = service;
-            //_sorting = sorting;
 
         }
 
@@ -29,10 +28,6 @@ namespace PracticeMVC.Service
 
             return _service.DecideSortStrategy(newItems, UserSortChoice);
 
-            //var dictionary = _service.PutTextInDictionary(newItems);
-
-
-            //return dictionary;
 
         }
 

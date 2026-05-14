@@ -4,19 +4,18 @@ namespace PracticeMVC.Strategies
 {
     public class Sorting
     {
-        private ISortingStrategy _sortingStrategy; // declaring an interface for the sorting abstract class and calling it _sortingMethod.
+        private ISortingStrategy _sortingStrategy; 
 
-        public Sorting(ISortingStrategy sortingStrategy) //constructor passes in interface object to construct the _sorting method.
+        public Sorting(ISortingStrategy sortingStrategy) 
         {
             _sortingStrategy = sortingStrategy;
         }
 
 
-        //behaviours/methods
 
         public void Sort(List<KeyValuePair<string, int>> result)
         {
-            _sortingStrategy.Sort(result);  // this is a interface object accessing sort() - which coudl be in any one.
+            _sortingStrategy.Sort(result);  
         }
 
 

@@ -32,10 +32,6 @@ namespace PracticeMVC.Controllers
         [HttpPost]
         public IActionResult Index(string inputText, string searchMethod, string sortMethod)
         {
-            
-            //pass in searchMethod and sortMethod - these are sleected from drop down. recieving them as strings eg FL or BST
-            //controller decides how to process this text. we have texrt, we know the prefered search and sort methods.
-
 
             var dictionary = _coordinator.ProccessString(inputText, searchMethod, sortMethod); 
 
