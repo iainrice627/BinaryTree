@@ -35,8 +35,16 @@ namespace PracticeMVC.Service
 
             _service.PutInTree(text);
             var modelList = _service.TraverseTree();
+            //we have the list of nodes we now need to sort them
+
+
+            
             // call a sort method on the List of Nodes then put this list in the dictionary.
             modelList = _sorting.SortHighToLow(modelList);
+
+
+
+
             var dictionary = _service.PutTextInDictionary(modelList);
 
 
