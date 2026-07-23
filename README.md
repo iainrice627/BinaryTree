@@ -18,8 +18,6 @@ There is a plan to measure the performance of each search and sort and display t
 - extend to accept much largers texts or multiple types of texts.
 
 
-#Reflections 
 
-Its a very over engineered website! but i will continue to explore how to make use of the features more appropiatlty. 
 
 
